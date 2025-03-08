@@ -1,39 +1,63 @@
-# MKV ChapWeb工具文档
-## 前言
+# MKV ChapWeb Tool Documentation
 
-3月初，个人有需求生成 MKV 章节文件，但是找了半天支持直接编辑章节文件的软件少之又少，好不容易找到了软件界面还是上古时代的风格。于是本人自己花费时间使用纯静态前端语言进行编写了此工具，命名为MKV ChapWeb.
+Doc Language [English](readme.md) | [简体中文](readme-CN.md)
+## Preface
 
-## 简介
+At the beginning of March, I had a need to generate MKV chapter files. However, after searching for a long time, there were very few software programs that supported direct editing of chapter files. When I finally found some software, their interfaces were still in an archaic style. Therefore, I spent my own time writing this tool using pure static front-end languages and named it MKV ChapWeb.
 
-MKV ChapWeb 是一款 MKV 视频格式章节生成工具，能够帮助用户快速生成、编辑与管理视频文件中的章节信息。通过直观的网页界面与便捷性，用户可以快速设置视频的章节数量、章节名称、开始与结束时间等基础参数，并生成与导出符合 MKV 格式规范的章节标签 XML 文件，方便在支持 MKV 视频的播放器内实现精准的章节导航。
+## Introduction
 
-## 使用方法
-此工具没有什么复杂的参数，所以使用也是非常简单。仅限于日常的场景使用，所以没有比较冷门的参数标签。
+MKV ChapWeb is a tool for generating chapters of MKV video format. It can help users quickly generate, edit, and manage the chapter information in video files. Through an intuitive web interface and convenience, users can quickly set basic parameters such as the number of video chapters, chapter names, start and end times, etc., and generate and export chapter label XML files that comply with the MKV format specification, making it convenient to achieve precise chapter navigation in players that support MKV videos.
 
-### 界面布局与基础操作
+## Usage Method
 
-  * **侧边栏参数块** ：工具启动后，侧边栏会根据默认章节数量动态生成参数块，每个块包含章节名称、开始时间、结束时间等输入项，用户可直接在对应输入框中填写或修改章节信息。
-  * **主控参数区** ：位于页面主体部分，包含视频章节数量、语言代码等关键参数设置项，修改这些参数后，点击相关按钮可触发相应操作，如生成章节标签、更新侧边栏参数块等。
-  * **操作按钮** ：“生成章节标签” 按钮用于依据当前设置生成 XML 格式的章节标签文件；“上传 XML” 和 “下载 XML” 按钮分别用于导入已有章节信息文件和导出当前生成的章节标签文件，方便数据临时导出后可上传继续进行编辑。
+This tool doesn't have any complex parameters, so it's very easy to use. It is only suitable for daily scenarios, so there are no relatively obscure parameter tags.
 
-### 章节参数设置
+### Interface Layout and Basic Operations
 
-  1. **章节数量调整** ：在主控参数区的 “视频章节数量” 输入框中输入所需的章节数并Enter，侧边栏将自动更新为对应数量的章节参数块，用户可在这些块中逐一填写各章节的详细信息。
-  2. **章节名称填写** ：在每个章节参数块的 “章节名称” 输入框中，输入该章节的名称或标题，名称应简洁明了且具有辨识度，以便在播放设备上能够清晰地标识章节内容。
-  3. **时间参数设置** ：对于 “章节开始时间” 和 “章节结束时间” 输入框，用户需按照指定的时间格式（如 “时：分：秒”）输入相应的时间值，准确反映章节在视频中的起止位置，确保播放时能够正确识别到相应章节。
+- **Sidebar Parameter Blocks**: After the tool is launched, the sidebar will dynamically generate parameter blocks according to the default number of chapters. Each block contains input items such as chapter name, start time, and end time. Users can directly fill in or modify the chapter information in the corresponding input boxes.
+  
+- **Main Control Parameter Area**: Located in the main part of the page, it contains key parameter settings such as the number of video chapters and language code. After modifying these parameters, clicking the relevant buttons can trigger corresponding operations, such as generating chapter labels and updating the sidebar parameter blocks.
+  
+- **Operation Buttons**: 
+  - "Generate Chapter Labels" button: Used to generate a chapter label file in XML format according to the current settings.
+  - "Upload XML" and "Download XML" buttons: Used to import existing chapter information files and export the currently generated chapter label files respectively, making it convenient to upload and continue editing after temporarily exporting the data.
 
-### 文件操作流程
+### Chapter Parameter Settings
 
-  * **生成 XML 文件** ：完成所有章节参数后设置，点击 “生成章节标签” 按钮，工具将根据当前参数生成符合规范的 XML 格式章节标签文件，并在页面中显示预览内容，用户可检查文件的准确性与完整性。
-  * **下载 XML 文件** ：若对生成的 XML 文件满意，点击 “下载 XML” 按钮，将文件保存到本地设备，以便后续在视频编辑软件或 MKV 相关工具中使用，将其嵌入到 MKV 视频文件中实现章节功能。
-  * **上传 XML 文件** ：如需对已有的 XML 章节文件进行修改或查看，可点击 “上传 XML” 按钮，选择本地的 XML 文件进行导入，工具会解析文件内容并更新侧边栏的章节参数块，用户可在基础上进行进一步编辑。
+1. **Adjusting the Number of Chapters**: 
+   - Enter the required number of chapters in the "Number of Video Chapters" input box in the main control parameter area and press Enter.
+   - The sidebar will automatically update to the corresponding number of chapter parameter blocks, and users can fill in the detailed information of each chapter one by one in these blocks.
 
-## 更新记录
+2. **Filling in Chapter Names**: 
+   - In the "Chapter Name" input box of each chapter parameter block, enter the name or title of the chapter.
+   - The name should be concise, clear, and identifiable, so that the chapter content can be clearly identified on the playback device.
 
-  * **v2.2a** ：添加移除与添加侧边参数块功能，通过此处操作将不会重置已有的数据。
-  * **v2.1b** ：新增上传XML文件与下载XML文件，目前上传还处于beta阶段，可能出现数据异常。
-  * **v2.0a** ：重构样式与生成逻辑，添加侧边栏，将所有子参数传入章节参数块，主控添加动态的章节参数块。适配移动端样式。
-  * **v1.3c** ：结束时间标签此时添加可选状态，默认不启用。添加双击复制所有代码。
-  * **v1.2a** ：添加了自定义开始与结束时间的标签。时间输入框默认分隔符可输入小数点与减号进行连接，最后输出会格式化为时间的格式
-  * **v1.1a** ：第二代版本，新增了语言代码与参数ID类型为顺序或随机。
-  * **v1.0a** ：初版本，只有生成章节与章节数量两个参数。
+3. **Setting Time Parameters**: 
+   - For the "Chapter Start Time" and "Chapter End Time" input boxes, users need to enter the corresponding time values according to the specified time format (e.g., "Hour:Minute:Second").
+   - This accurately reflects the start and end positions of the chapter in the video, ensuring that the corresponding chapter can be correctly recognized during playback.
+
+### File Operation Process
+
+- **Generating an XML File**: 
+  - After setting all the chapter parameters, click the "Generate Chapter Labels" button.
+  - The tool will generate a chapter label file in XML format that complies with the specification according to the current parameters and display the preview content on the page.
+  - Users can check the accuracy and integrity of the file.
+
+- **Downloading the XML File**: 
+  - If satisfied with the generated XML file, click the "Download XML" button to save the file to the local device.
+  - This file can be used in video editing software or MKV-related tools to embed into MKV video files and achieve the chapter function.
+
+- **Uploading the XML File**: 
+  - If needing to modify or view an existing XML chapter file, click the "Upload XML" button and select the local XML file for import.
+  - The tool will parse the file content and update the chapter parameter blocks in the sidebar, allowing users to further edit on this basis.
+
+## Update Log
+
+- **v2.2a**: Added the functions of removing and adding sidebar parameter blocks. Operations here will not reset the existing data.
+- **v2.1b**: Added the functions of uploading and downloading XML files. Currently, the uploading function is still in the beta stage, and data anomalies may occur.
+- **v2.0a**: Refactored the style and generation logic, added a sidebar, passed all sub-parameters into the chapter parameter blocks, and added dynamic chapter parameter blocks in the main control. Adapted the mobile style.
+- **v1.3c**: The end time label is now in an optional state and is not enabled by default. Added the function of double-clicking to copy all the code.
+- **v1.2a**: Added custom start and end time labels. The default delimiter in the time input box can be entered with a decimal point or a minus sign for connection, and the final output will be formatted into the time format.
+- **v1.1a**: The second generation version, added the language code and the parameter ID type can be sequential or random.
+- **v1.0a**: The initial version, with only two parameters, generating chapters and the number of chapters.
