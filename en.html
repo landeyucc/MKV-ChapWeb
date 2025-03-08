@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MKV ChapWeb</title>
+	<link rel="shortcut icon" href="chapweb.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+    </div>
+    <div class="container">
+        <button id="sidebarToggle" class="sidebar-toggle" onclick="toggleSidebar()" style="background: none;">
+			<img src="img/io.svg" id="Rotaimg"/>
+        </button>
+        <h1>MKV ChapWeb Main Control Parameters</h1>
+        <p style="color: red;text-align: left;">Attention: Modifying this parameter will reset the sidebar to its default value. Please confirm and adjust it before starting to avoid losing work progress.</p>
+        <div class="input-group">
+            <div>
+                <label for="chapterCount">Number of video chapters</label>
+                <input type="number" id="chapterCount" value="2" min="1" onchange="updateParamBlocks()">
+            </div>
+            <div>
+                <label for="language">Language code</label>
+                <input type="text" id="language" value="eng">
+            </div>
+            <div>
+                <label for="ietfLanguage">IETF Language code</label>
+                <input type="text" id="ietfLanguage" value="en">
+            </div>
+            <div>
+                <label for="paramIdType">Parameter ID type</label>
+                <select id="paramIdType" onchange="updateParamBlocks()">
+                    <option value="sequential">Generate in order</option>
+                    <option value="random">Random generation</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-group">
+            <div>
+                <label for="includeEndTime" style="font-size: 18px;">Do you want to enable chapter end time tags</label>
+                <input type="checkbox" id="includeEndTime" onchange="updateParamBlocks()">
+            </div>
+			<div>
+				<button onclick="window.location.href='zh.html'" id="Clanguage">Switch Language</button>
+			</div>
+        </div>
+        <button onclick="generateChapters()">Generate and preview chapter labels</button>
+        <input type="file" id="uploadXML" accept=".xml" style="display: none;" onchange="uploadAndParseXML()">
+        <button onclick="document.getElementById('uploadXML').click()">Upload XML file (beta function)</button>
+        <button onclick="downloadXML()">Download XML file</button>
+        <iframe id="outputFrame" src="iframeContent.html" style="display: none;"></iframe>
+    </div>
+    <script src="js/script-en.js"></script>
+	<script src="js/uidortime.js"></script>
+	<script src="js/chapopt.js"></script>
+	<script src="js/uploadxml-en.js"></script>
+	<script src="js/rotaimg.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+body {
+            padding: 0;
+            margin: 0;
+        }
+
+        pre {
+            background-color: #000000;
+            border: 3px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+
+        #dingbublock {
+            height: 20px;
+            position: fixed;
+            top: 0px;
+            right: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, #1e1e1e 100%);
+            z-index: 6;
+        }
+
+        #dibublock {
+            height: 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #1e1e1e 100%);
+            z-index: 5;
+        }
+
+        /* 悬浮提示框样式 */
+        #copy-success {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 255, 247, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 9999;
+        }
+		
+		

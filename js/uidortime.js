@@ -10,13 +10,6 @@ function generateRandomUID() {
     return uid;
 }
 
-
-
-
-
-
-
-
 // 验证并格式化时间码的函数
 function validateAndFormatTimeCode(timeCode) {
     // 首先检查输入是否为字符串，如果不是则直接返回默认值

@@ -5,21 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MKV ChapWeb</title>
+	<link rel="shortcut icon" href="chapweb.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/vs2015.min.css">
 </head>
 
 <body>
     <div class="sidebar" id="sidebar">
-        <!-- 参数块将动态生成 -->
     </div>
     <div class="container">
-        <!-- 添加侧边栏图标按钮 -->
         <button id="sidebarToggle" class="sidebar-toggle" onclick="toggleSidebar()" style="background: none;">
 			<img src="img/io.svg" id="Rotaimg"/>
         </button>
         <h1>MKV ChapWeb 主控参数</h1>
-        <p style="color: red;">注意：修改此处参数会重置侧边栏为默认值，请在开始前编辑预先确认调整完毕，以避免丢失工作进度。</p>
+        <p style="color: red;text-align: left;">注意：修改此处参数会重置侧边栏为默认值，请在开始前编辑预先确认调整完毕，以避免丢失工作进度。</p>
         <div class="input-group">
             <div>
                 <label for="chapterCount">视频章节数量</label>
@@ -43,14 +41,14 @@
         </div>
         <div class="input-group">
             <div>
-                <label for="includeEndTime">是否启用章节结束时间标签</label>
-                <!-- 修改此处，添加 checked 属性 -->
+                <label for="includeEndTime" style="font-size: 18px;">是否启用章节结束时间标签</label>
                 <input type="checkbox" id="includeEndTime" onchange="updateParamBlocks()">
             </div>
+			<div>
+				<button onclick="window.location.href='en.html'" id="Clanguage">切换语言</button>
+			</div>
         </div>
         <button onclick="generateChapters()">生成并预览章节标签</button>
-        
-        <!-- 新增下载和上传按钮 -->
         <input type="file" id="uploadXML" accept=".xml" style="display: none;" onchange="uploadAndParseXML()">
         <button onclick="document.getElementById('uploadXML').click()">上传 XML 文件 (beta功能)</button>
         <button onclick="downloadXML()">下载 XML 文件</button>
