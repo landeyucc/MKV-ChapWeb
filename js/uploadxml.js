@@ -55,7 +55,7 @@ function uploadAndParseXML() {
                         <label for="chapterStartTime-${i}">章节开始时间</label>
                         <input type="text" id="chapterStartTime-${i}" value="${startTime}">
                         ${endTimeInputHtml}
-                        <button class="remove-param-block" onclick="removeParamBlock(this)">×</button>
+                        <button class="remove-param-block" onclick="removeParamBlock(this)">移除</button>
                     `;
 
                     sidebar.appendChild(paramBlock);

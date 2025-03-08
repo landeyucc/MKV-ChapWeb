@@ -50,7 +50,7 @@ function uploadAndParseXML() {
                         <label for="chapterStartTime-${i}">Chapter start time</label>
                         <input type="text" id="chapterStartTime-${i}" value="${startTime}">
                         ${endTimeInputHtml}
-                        <button class="remove-param-block" onclick="removeParamBlock(this)">×</button>
+                        <button class="remove-param-block" onclick="removeParamBlock(this)">Remove</button>
                     `;
 
                     sidebar.appendChild(paramBlock);
