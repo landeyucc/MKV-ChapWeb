@@ -1,0 +1,296 @@
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(180deg);
+      }
+    }
+
+    .rotate {
+      animation: rotate 0.5s infinite alternate;
+    }
+
+html,
+iframe {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 10px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+	height: auto;
+    max-width: 1000px;
+    text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+    transition: all 0.3s ease;
+    position: relative; /* 相对定位，用于定位图标按钮 */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .input-group {
+        flex-direction: row;
+    }
+}
+
+.input-group label {
+    margin: 0 10px 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.input-group input {
+    flex: 1;
+    margin-bottom: 10px;
+    padding: 12px;
+    width: 80px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.input-group select {
+    flex: 1;
+    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group select:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+
+@media screen and (max-width:768px) {
+	.input-group{
+		text-align: left;
+	}
+	.input-group input {
+	    width: 100px;
+	}
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+iframe {
+    background-color: #1e1e1e;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    width: 98%;
+    height: 300px;
+    margin-top: 20px;
+    text-align: left;
+    white-space: pre-wrap;
+    max-height: calc(90vh - 200px);
+    transition: all 0.3s ease;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    transform: translateX(-100%);
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 250px;
+        transform: translateX(0);
+    }
+    .container {
+        margin-left: 270px;
+    }
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+/* 侧边栏图标按钮样式 */
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* 移动到右侧 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 20px;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .sidebar-toggle {
+        display: none;
+    }
+}
+
+.sidebar-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+.param-block {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.param-block h3 {
+    margin-top: 0;
+    color: #343a40;
+    font-size: 18px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.param-block label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.param-block input,
+.param-block select {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+/* 显示和隐藏类 */
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+/* 新增按钮集合参数块样式 */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.remove-param-block {
+    background: #e5e5e5;
+    border: none;
+    cursor: pointer;
+    color: red;
+    font-size: 16px;
+}
+.remove-param-block:hover {
+	background-color: red;
+	color: yellow;
+}
+
+#addParamBlock {
+    margin-top: 10px;
+}
+
+button[onclick="document.getElementById('uploadXML').click()"] {
+	display: inline-block;
+	width: 48%;
+}
+
+button[onclick="downloadXML()"] {
+	display: inline-block;
+	width: 48%;
+	margin-left: 3%;
+}
+
+@media screen and (max-width:768px){
+	button[onclick="document.getElementById('uploadXML').click()"]{
+		width: 100%;
+	}
+	button[onclick="downloadXML()"]{
+		width: 100%;
+		margin-left: 0;
+	}
+}

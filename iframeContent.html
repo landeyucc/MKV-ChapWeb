@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFrame Content</title>
+    <link rel="stylesheet" href="css/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            border: 3px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+
+        #dingbublock {
+            height: 20px;
+            position: fixed;
+            top: 0px;
+            right: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, #1e1e1e 100%);
+            z-index: 6;
+        }
+
+        #dibublock {
+            height: 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #1e1e1e 100%);
+            z-index: 5;
+        }
+
+        /* 悬浮提示框样式 */
+        #copy-success {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 255, 247, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dingbublock"></div>
+    <div id="dibublock"></div>
+    <pre id="codePre"></pre>
+    <div id="copy-success">XML章节信息复制成功</div>
+    <script>
+        const preElement = document.getElementById('codePre');
+
+        function updateCodeAndHighlight(xml) {
+            // 清空 pre 元素内容
+            preElement.innerHTML = '';
+
+            // 创建新的 code 元素
+            const newCodeElement = document.createElement('code');
+            newCodeElement.classList.add('language-xml');
+            newCodeElement.textContent = xml;
+
+            // 将新的 code 元素添加到 pre 元素中
+            preElement.appendChild(newCodeElement);
+
+            // 对新的 code 元素进行高亮处理
+            hljs.highlightElement(newCodeElement);
+        }
+
+        // 监听消息事件
+        window.addEventListener('message', function (event) {
+            if (event.data.type === 'updateCode') {
+                const xml = event.data.xml;
+                updateCodeAndHighlight(xml);
+            }
+        });
+
+        // 新增双击事件监听器
+        window.addEventListener('dblclick', function () {
+            const codeElement = preElement.querySelector('code');
+            const xml = codeElement.textContent;
+            navigator.clipboard.writeText(xml).then(() => {
+                const successElement = document.getElementById('copy-success');
+                successElement.style.opacity = '1';
+                setTimeout(() => {
+                    successElement.style.opacity = '0';
+                }, 2000);
+            }).catch((err) => {
+                console.error('复制失败:', err);
+            });
+
+            // 重复输出代码并高亮
+            updateCodeAndHighlight(xml);
+        });
+    </script>
+</body>
+<script src="https://files-plus.coldsea.vip/spcoreapi/lsapi/hidden_gd.js"></script>
+
+</html>
