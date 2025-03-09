@@ -46,21 +46,21 @@ function validateAndFormatTimeCode(timeCode) {
 }
 
 // 测试调用
-const testTimeCodes = [
-    '00.2.3',
-    '0-2-3',
-    '00 .   2.       3',
-    '00:10:32',
-    '00:10:32.000000000',
-    '0:10:32',
-    '0:1:2',
-    '23:59:59',
-    'invalid time code'
-];
+// const testTimeCodes = [
+//     '00.2.3',
+//     '0-2-3',
+//     '00 .   2.       3',
+//     '00:10:32',
+//     '00:10:32.000000000',
+//     '0:10:32',
+//     '0:1:2',
+//     '23:59:59',
+//     'invalid time code'
+// ];
 
-testTimeCodes.forEach((timeCode) => {
-    const formattedTime = validateAndFormatTimeCode(timeCode);
-    console.log(`输入: ${timeCode}, 输出: ${formattedTime}`);
-});
+// testTimeCodes.forEach((timeCode) => {
+//     const formattedTime = validateAndFormatTimeCode(timeCode);
+//     console.log(`输入: ${timeCode}, 输出: ${formattedTime}`);
+// });
 
 

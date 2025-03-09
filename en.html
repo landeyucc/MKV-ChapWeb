@@ -10,12 +10,17 @@
 </head>
 
 <body>
+	<div class="progress-bar"></div>
+	<script src="js/load.js"></script>
     <div class="sidebar" id="sidebar">
     </div>
     <div class="container">
         <button id="sidebarToggle" class="sidebar-toggle" onclick="toggleSidebar()" style="background: none;">
-			<img src="img/io.svg" id="Rotaimg"/>
+			<img src="img/io.svg" id="Rotaimga"/>
         </button>
+		<button id="theme-toggle" class="theme-toggle">
+		    <img src="img/darklight.svg" id="Rotaimgb"/>
+		</button>
         <h1>MKV ChapWeb Main Control Parameters</h1>
         <p style="color: red;text-align: left;">Attention: Modifying this parameter will reset the sidebar to its default value. Please confirm and adjust it before starting to avoid losing work progress.</p>
         <div class="input-group">
@@ -54,11 +59,24 @@
         <button onclick="downloadXML()">Download XML file</button>
         <iframe id="outputFrame" src="iframeContent.html" style="display: none;"></iframe>
     </div>
-    <script src="js/script-en.js"></script>
+	<footer>
+	        <div class="footer-content">
+				<img src="img/chapweb.svg" class="clogoimg"/>
+	            &copy; <span id="cyear"></span> <a href="https://github.com/landeyucc/" target="_blank">@landeyucc</a> All rights reserved.
+				<br id="ISMhidden"/>
+				<a href="https://github.com/landeyucc/MKV-ChapWeb" target="_blank"><img src="img/github.svg" class="clogoimg"/>&nbsp;GitHub Project</a>
+	            <a href="https://vl-a.com" target="_blank"><img src="img/vlicon.png" class="clogoimg"/>&nbsp;Lande Space</a>
+	        </div>
+	    </footer>
+	
+	    <script>
+	        document.getElementById('cyear').textContent = new Date().getFullYear();
+	    </script>
+</body>
+	<script src="js/script-en.js"></script>
 	<script src="js/uidortime.js"></script>
 	<script src="js/chapopt.js"></script>
 	<script src="js/uploadxml-en.js"></script>
 	<script src="js/rotaimg.js"></script>
-</body>
-
+	<script src="js/lightdark.js"></script>
 </html>

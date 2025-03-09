@@ -102,7 +102,7 @@ function updateParamBlocks() {
             <label for="chapterStartTime-${i}">Chapter start time</label>
             <input type="text" id="chapterStartTime-${i}" value="00:00:00">
             ${endTimeInputHtml}
-            <button class="remove-param-block" onclick="removeParamBlock(this)">×</button>
+            <button class="remove-param-block" onclick="removeParamBlock(this)">Remove</button>
         `;
 
         sidebar.appendChild(paramBlock);
@@ -142,7 +142,7 @@ function addParamBlock() {
         <label for="chapterStartTime-${currentCount}">Chapter start time</label>
         <input type="text" id="chapterStartTime-${currentCount}" value="00:00:00">
         ${endTimeInputHtml}
-        <button class="remove-param-block" onclick="removeParamBlock(this)">×</button>
+        <button class="remove-param-block" onclick="removeParamBlock(this)">Remove</button>
     `;
 
     const addButton = document.getElementById('addParamBlock');

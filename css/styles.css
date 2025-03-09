@@ -1,277 +1,413 @@
 /* 隐藏滚动条 */
 ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 @keyframes rotate {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(180deg);
-      }
-    }
+	from {
+		transform: rotate(0deg);
+	}
 
-    .rotate {
-      animation: rotate 0.5s infinite alternate;
-    }
+	to {
+		transform: rotate(180deg);
+	}
+}
+
+.rotate {
+	animation: rotate 0.5s infinite alternate;
+}
 
 html,
 iframe {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 10px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #f4f4f9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	padding: 10px;
+	opacity: 0;
+	/* transition: background-color 0.3s ease-in; */
+	transition: opacity 1s ease-in;
+}
+
+.loaded {
+    opacity: 1;
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #0127ff;
+    z-index: 2000;
+    transition: width 0.3s ease-in-out;
+}
+
+.progress-bar.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* 浅色模式默认样式 */
+body.light-mode {
+	background-color: #f4f4f9;
+	color: #333;
+}
+
+/* 深色模式样式 */
+body.dark-mode {
+	background-color: #1e1e1e;
+	color: #dcdcdc;
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
 	height: auto;
-    max-width: 1000px;
-    text-align: center;
+	max-width: 980px;
+	text-align: center;
 	margin-top: 50px;
 	margin-bottom: 50px;
-    transition: all 0.3s ease;
-    position: relative; /* 相对定位，用于定位图标按钮 */
+	transition: all 0.3s ease;
+	position: relative;
+}
+
+/* 深色模式下容器的样式 */
+body.dark-mode .container {
+	background-color: #2d2d2d;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 20px;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+/* 深色模式下标题的样式 */
+body.dark-mode h1 {
+	color: #dcdcdc;
 }
 
 .input-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	transition: all 0.3s ease;
 }
 
-@media (min-width: 768px) {
-    .input-group {
-        flex-direction: row;
-    }
+@media (min-width: 1000px) {
+	.input-group {
+		flex-direction: row;
+	}
 }
 
 .input-group label {
-    margin: 0 10px 5px 0;
-    font-size: 14px;
-    color: #555;
+	margin: 0 10px 5px 0;
+	font-size: 14px;
+	color: #555;
+}
+
+/* 深色模式下标签的样式 */
+body.dark-mode .input-group label {
+	color: #dcdcdc;
 }
 
 .input-group input {
-    flex: 1;
-    margin-bottom: 10px;
-    padding: 12px;
-    width: 80px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	flex: 1;
+	margin-bottom: 10px;
+	padding: 12px;
+	width: 80px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-group input:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+	outline: none;
+	border-color: #007BFF;
+	box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* 深色模式下输入框的样式 */
+body.dark-mode .input-group input {
+	background-color: #333;
+	color: #dcdcdc;
+	border-color: #555;
 }
 
 .input-group select {
-    flex: 1;
-    margin-bottom: 10px;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	flex: 1;
+	margin-bottom: 10px;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-group select:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+	outline: none;
+	border-color: #007BFF;
+	box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
+/* 深色模式下选择框的样式 */
+body.dark-mode .input-group select {
+	background-color: #333;
+	color: #dcdcdc;
+	border-color: #555;
+}
 
-@media screen and (max-width:768px) {
-	.input-group{
+@media screen and (max-width:1000px) {
+	.input-group {
 		text-align: left;
 	}
+
 	.input-group input {
-	    width: 100px;
+		width: 100px;
 	}
 }
 
 button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-    font-size: 16px;
+	width: 100%;
+	padding: 12px;
+	background-color: #007BFF;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-bottom: 20px;
+	font-size: 16px;
 }
 
 button:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
+}
+
+/* 深色模式下按钮的样式 */
+body.dark-mode button {
+	background-color: #0056b3;
 }
 
 iframe {
-    background-color: #1e1e1e;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-    width: 98%;
-    height: 300px;
-    margin-top: 20px;
-    text-align: left;
-    white-space: pre-wrap;
-    max-height: calc(90vh - 200px);
-    transition: all 0.3s ease;
+	background-color: #1e1e1e;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 10px;
+	width: 98%;
+	height: 300px;
+	margin-top: 20px;
+	text-align: left;
+	white-space: pre-wrap;
+	max-height: calc(90vh - 200px);
+	transition: all 0.3s ease;
 }
 
 /* 侧边栏样式 */
 .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #f8f9fa;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    transform: translateX(-100%);
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #f8f9fa;
+	padding: 20px;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	overflow-y: auto;
+	z-index: 1000;
+	transition: all 0.3s ease;
+	transform: translateX(-100%);
 }
 
-@media (min-width: 768px) {
-    .sidebar {
-        width: 250px;
-        transform: translateX(0);
-    }
-    .container {
-        margin-left: 270px;
-    }
+/* 深色模式下侧边栏的样式 */
+body.dark-mode .sidebar {
+	background-color: #2d2d2d;
+	box-shadow: 2px 0 5px rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 1000px) {
+	.sidebar {
+		width: 250px;
+		transform: translateX(0);
+	}
+
+	.container {
+		margin-left: 270px;
+	}
 }
 
 .sidebar.active {
-    transform: translateX(0);
+	transform: translateX(0);
 }
 
 /* 侧边栏图标按钮样式 */
 .sidebar-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px; /* 移动到右侧 */
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 20px;
-    padding: 0;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	z-index: 1001;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 30px;
+	height: 20px;
+	padding: 0;
 }
 
-@media (min-width: 768px) {
-    .sidebar-toggle {
-        display: none;
-    }
+@media (min-width: 1000px) {
+	.sidebar-toggle {
+		display: none;
+	}
 }
 
 .sidebar-toggle .bar {
-    width: 100%;
-    height: 3px;
-    background-color: #333;
-    transition: all 0.3s ease;
+	width: 100%;
+	height: 3px;
+	background-color: #333;
+	transition: all 0.3s ease;
+}
+
+/* 深色模式下侧边栏切换按钮的样式 */
+body.dark-mode .sidebar-toggle .bar {
+	background-color: #dcdcdc;
 }
 
 .param-block {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	border-radius: 5px;
+	padding: 15px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	transition: all 0.3s ease;
+}
+
+/* 深色模式下参数块的样式 */
+body.dark-mode .param-block {
+	background-color: #333;
+	border-color: #555;
+	box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
 }
 
 .param-block h3 {
-    margin-top: 0;
-    color: #343a40;
-    font-size: 18px;
-    border-bottom: 1px solid #dee2e6;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+	margin-top: 0;
+	color: #343a40;
+	font-size: 18px;
+	border-bottom: 1px solid #dee2e6;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+/* 深色模式下参数块标题的样式 */
+body.dark-mode .param-block h3 {
+	color: #dcdcdc;
+	border-color: #555;
 }
 
 .param-block label {
-    display: block;
-    margin-bottom: 5px;
-    color: #495057;
+	display: block;
+	margin-bottom: 5px;
+	color: #495057;
+}
+
+/* 深色模式下参数块标签的样式 */
+body.dark-mode .param-block label {
+	color: #dcdcdc;
 }
 
 .param-block input,
 .param-block select {
-    width: 90%;
-    padding: 8px;
-    border: 1px solid #ced4da;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
+	width: 90%;
+	padding: 8px;
+	border: 1px solid #ced4da;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	transition: all 0.3s ease;
+}
+
+/* 深色模式下参数块输入框和选择框的样式 */
+body.dark-mode .param-block input,
+body.dark-mode .param-block select {
+	background-color: #333;
+	color: #dcdcdc;
+	border-color: #555;
 }
 
 /* 显示和隐藏类 */
 .show {
-    display: block;
+	display: block;
 }
 
 .hide {
-    display: none;
+	display: none;
 }
 
 /* 新增按钮集合参数块样式 */
 .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
 }
 
 .remove-param-block {
-    background: #e5e5e5;
-    border: none;
-    cursor: pointer;
-    color: red;
-    font-size: 16px;
+	background: #e5e5e5;
+	border: none;
+	cursor: pointer;
+	color: red;
+	font-size: 16px;
+	width: 98%;
 }
+
 .remove-param-block:hover {
 	background-color: red;
 	color: yellow;
 }
 
 #addParamBlock {
-    margin-top: 10px;
+	margin-top: 10px;
+}
+
+#includeEndTime {
+	width: 20px;
+}
+
+#ISMhidden{
+	display: none;
+}
+
+@media screen and (max-width:1000px) {
+	.param-block {
+		width: 84%;
+	}
+
+	.remove-param-block {
+		width: 96%;
+	}
+
+	#addParamBlock {
+		width: 90%;
+	}
+	#ISMhidden{
+	display: block;
+}
 }
 
 button[onclick="document.getElementById('uploadXML').click()"] {
@@ -285,18 +421,169 @@ button[onclick="downloadXML()"] {
 	margin-left: 3%;
 }
 
-@media screen and (max-width:768px){
-	button[onclick="document.getElementById('uploadXML').click()"]{
+@media screen and (max-width:1000px) {
+	button[onclick="document.getElementById('uploadXML').click()"] {
 		width: 100%;
 	}
-	button[onclick="downloadXML()"]{
+
+	button[onclick="downloadXML()"] {
 		width: 100%;
 		margin-left: 0;
 	}
 }
 
-#Clanguage{
+#Clanguage {
 	background: #000;
-	margin-top: -20px;
-	margin-bottom: -20px;
+	margin: 0;
+}
+
+/* 主题切换按钮样式 */
+.theme-toggle {
+	position: absolute;
+	top: 20px;
+	right: 60px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	z-index: 900;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+}
+
+.theme-toggle:hover {
+	background: none;
+}
+
+.theme-toggle img {
+	width: 30px;
+}
+
+/* 深色模式下主题切换按钮的样式 */
+body.dark-mode .theme-toggle {
+	color: #dcdcdc;
+	background: none;
+	filter: invert(1);
+}
+
+body.dark-mode .theme-toggle:hover {
+	background: none;
+}
+
+footer {
+	position: fixed;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #f4f4f9 100%);
+	color: black;
+	bottom: 0;
+	display: block;
+	text-align: center;
+	padding: 20px 0;
+	padding-bottom: 10px;
+	margin-top: 20px;
+	margin-bottom: 0;
+	width: 100%;
+	z-index: 900;
+}
+
+body.dark-mode footer{
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #503563 100%);
+	color: white;
+}
+
+.footer-content {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+
+footer a {
+	color: darkblue;
+	text-decoration: none;
+	margin: 0 15px;
+	transition: color 0.3s;
+}
+
+body.dark-mode footer a {
+	color: yellow;
+}
+
+footer a:hover {
+	color: #16fafd;
+}
+
+.clogoimg{
+	width: 20px;
+	transform: translateY(4px);
+}
+
+/* 自动检测系统主题 */
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #1e1e1e;
+		color: #dcdcdc;
+	}
+
+	.container {
+		background-color: #2d2d2d;
+		box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+	}
+
+	h1 {
+		color: #dcdcdc;
+	}
+
+	.input-group label {
+		color: #dcdcdc;
+	}
+
+	.input-group input {
+		background-color: #333;
+		color: #dcdcdc;
+		border-color: #555;
+	}
+
+	.input-group select {
+		background-color: #333;
+		color: #dcdcdc;
+		border-color: #555;
+	}
+
+	button {
+		background-color: #0056b3;
+	}
+
+	.sidebar {
+		background-color: #2d2d2d;
+		box-shadow: 2px 0 5px rgba(255, 255, 255, 0.1);
+	}
+
+	.sidebar-toggle .bar {
+		background-color: #dcdcdc;
+	}
+
+	.param-block {
+		background-color: #333;
+		border-color: #555;
+		box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+	}
+
+	.param-block h3 {
+		color: #dcdcdc;
+		border-color: #555;
+	}
+
+	.param-block label {
+		color: #dcdcdc;
+	}
+
+	.param-block input,
+	.param-block select {
+		background-color: #333;
+		color: #dcdcdc;
+		border-color: #555;
+	}
 }

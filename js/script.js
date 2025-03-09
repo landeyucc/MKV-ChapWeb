@@ -109,7 +109,7 @@ function updateParamBlocks() {
             <label for="chapterStartTime-${i}">章节开始时间</label>
             <input type="text" id="chapterStartTime-${i}" value="00:00:00">
             ${endTimeInputHtml}
-            <button class="remove-param-block" onclick="removeParamBlock(this)">×</button>
+            <button class="remove-param-block" onclick="removeParamBlock(this)">移除</button>
         `;
 
         sidebar.appendChild(paramBlock);
@@ -152,7 +152,7 @@ function addParamBlock() {
         <label for="chapterStartTime-${currentCount}">章节开始时间</label>
         <input type="text" id="chapterStartTime-${currentCount}" value="00:00:00">
         ${endTimeInputHtml}
-        <button class="remove-param-block" onclick="removeParamBlock(this)">×</button>
+        <button class="remove-param-block" onclick="removeParamBlock(this)">移除</button>
     `;
 
     // 找到“添加章节参数块”按钮
