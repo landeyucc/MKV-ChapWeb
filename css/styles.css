@@ -84,6 +84,14 @@ body.dark-mode {
 	position: relative;
 }
 
+@media screen and (max-width:1000px) {
+	.container {
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+}
+
 /* 深色模式下容器的样式 */
 body.dark-mode .container {
 	background-color: #2d2d2d;
