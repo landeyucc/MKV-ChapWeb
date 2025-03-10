@@ -1,5 +1,5 @@
 # MKV ChapWeb Tool Documentation  
-Documentation Language [English](readme.md) | [Simplified Chinese](readme-CN.md)  
+Documentation Language [English](readme.md) | [简体中文](readme-CN.md)  
 
 ## Preface  
 In early March 2025, driven by personal requirements to generate MKV chapter files, extensive research revealed a scarcity of software supporting direct chapter editing. Existing tools featured outdated interfaces with design aesthetics trapped in an earlier era. To address this, I developed this tool using pure static frontend languages and named it MKV ChapWeb.  
