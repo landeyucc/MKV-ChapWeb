@@ -1,4 +1,3 @@
-// 生成章节的函数
 function generateChapters() {
     const chapterCount = parseInt(document.getElementById('chapterCount').value);
     const language = document.getElementById('language').value;
@@ -8,7 +7,6 @@ function generateChapters() {
 
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<Chapters>\n  <EditionEntry>\n';
     xml += `    <EditionUID>${generateRandomUID()}</EditionUID>\n`;
-    xml += '    <EditionFlagDefault>true</EditionFlagDefault>\n';
 
     for (let i = 0; i < chapterCount; i++) {
         const chapterNameInput = document.getElementById(`chapterName-${i}`);
@@ -33,12 +31,15 @@ function generateChapters() {
         xml += `      <ChapterUID>${chapterUID}</ChapterUID>\n`;
         xml += `      <ChapterTimeStart>${startTime}</ChapterTimeStart>\n`;
 
+
         if (includeEndTime) {
             xml += `      <ChapterTimeEnd>${endTime}</ChapterTimeEnd>\n`;
         }
 
         xml += '      <ChapterDisplay>\n';
         xml += `        <ChapterString>${chapterName}</ChapterString>\n`;
+		xml += `    	<ChapterLanguage>${language}</ChapterLanguage>\n`;
+		xml += `    	<ChapLanguageIETF>${ietfLanguage}</ChapLanguageIETF>\n`;
         xml += '      </ChapterDisplay>\n';
         xml += '    </ChapterAtom>\n';
     }

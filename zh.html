@@ -12,14 +12,16 @@
 <body>
 	<div class="progress-bar"></div>
 	<script src="js/load.js"></script>
-    <div class="sidebar" id="sidebar">
-    </div>
+    <div class="sidebar" id="sidebar"></div>
+	<div id="dragTarget" class="hide">
+		<h1>请将章节文件拖放至此进行解析</h1>
+	</div>
     <div class="container">
         <button id="sidebarToggle" class="sidebar-toggle" onclick="toggleSidebar()" style="background: none;">
-			<img src="img/io.svg" id="Rotaimga"/>
+			<img src="img/io.svg" id="Rotaimga" width="25px"/>
         </button>
 		<button id="theme-toggle" class="theme-toggle">
-            <img src="img/darklight.svg" id="Rotaimgb"/>
+            <img src="img/darklight.svg" id="Rotaimgb" style="transform: translateY(-2px);"/>
         </button>
         <h1 style="font-size: 1.8em;">MKV ChapWeb 主控参数</h1>
         <p style="color: red;text-align: left;">注意：修改此处参数会重置侧边栏为默认值，请在开始前编辑预先确认调整完毕，以避免丢失工作进度。</p>
@@ -53,17 +55,19 @@
 				<button onclick="window.location.href='en.html'" id="Clanguage">切换语言</button>
 			</div>
         </div>
-        <button onclick="generateChapters()">生成并预览章节标签</button>
-        <input type="file" id="uploadXML" accept=".xml" style="display: none;" onchange="uploadAndParseXML()">
-        <button onclick="document.getElementById('uploadXML').click()">上传 XML 文件 (beta功能)</button>
-        <button onclick="downloadXML()">下载 XML 文件</button>
+        <button onclick="generateChapters()">生成并预览 XML 章节标签</button>
+		<input type="file" id="uploadXML" style="display: none;" accept=".xml,.txt">
+		<button onclick="triggerFileSelection()">上传并解析 XML 文件</button>
+        <button onclick="downloadXML()">生成并下载 XML 文件</button>
         <iframe id="outputFrame" src="iframeContent.html" style="display: none;"></iframe>
     </div>
 	<footer>
 	        <div class="footer-content">
 				<img src="img/chapweb.svg" class="clogoimg"/>
+				<span>MKV ChapWeb v2.3</span>
+				<br id="ISMhiddenA"/>
 	            &copy;<span id="cyear"></span><a href="https://github.com/landeyucc/" target="_blank">@landeyucc</a>保留所有权利。 
-				<br id="ISMhidden"/>
+				<br id="ISMhiddenB"/>
 				<a href="https://github.com/landeyucc/MKV-ChapWeb" target="_blank"><img src="img/github.svg" class="clogoimg"/>&nbsp;GitHub项目</a>
 	            <a href="https://vl-a.com" target="_blank"><img src="img/vlicon.png" class="clogoimg"/>&nbsp;个人小站</a>
 	        </div>
@@ -78,4 +82,5 @@
 	<script src="js/uploadxml.js"></script>
 	<script src="js/rotaimg.js"></script>
 	<script src="js/lightdark.js"></script>
+	<script src="js/dragupload.js"></script>
 </html>

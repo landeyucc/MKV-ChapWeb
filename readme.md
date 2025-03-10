@@ -1,43 +1,89 @@
-# MKV ChapWeb Tool Documentation
-Document Language: [English](readme.md) | [简体中文](readme-CN.md)
-## Preface
+# MKV ChapWeb Tool Documentation  
+Documentation Language [English](readme.md) | [Simplified Chinese](readme-CN.md)  
 
-In early March this year, due to personal needs, I required to generate MKV chapter files. However, after extensive searching, I found that software supporting direct editing of chapter files is extremely rare. Moreover, the interfaces of the software I found were outdated, with styles remaining in an earlier era. In view of this, I spent time developing this tool using pure static front-end languages and named it MKV ChapWeb.
+## Preface  
+In early March 2025, driven by personal requirements to generate MKV chapter files, extensive research revealed a scarcity of software supporting direct chapter editing. Existing tools featured outdated interfaces with design aesthetics trapped in an earlier era. To address this, I developed this tool using pure static frontend languages and named it MKV ChapWeb.  
 
-## Introduction
+## Introduction  
+MKV ChapWeb is a specialized tool for generating MKV video chapter information, enabling efficient creation, editing, and management of chapter metadata. Through an intuitive web interface, users can easily set chapter quantities, names, start times, and end times, generating XML files compliant with MKV chapter tag specifications for precise chapter navigation in supported players.  
 
-MKV ChapWeb is a tool specifically designed for generating chapters in MKV video format. It enables users to efficiently generate, edit, and manage chapter information within video files. Through an intuitive web interface design, users can conveniently set basic parameters such as the number of video chapters, chapter names, start times, and end times, and generate XML files of chapter tags that comply with the MKV format specification, facilitating precise chapter navigation in MKV video-supported players.
+![Chapter](./img/mkv-chapter-img-en.jpg)  
 
-## Usage Instructions
-The parameter settings of this tool are relatively simple, suitable for daily usage scenarios, and do not include relatively obscure parameter tags.
+## Usage Guide  
+This tool focuses on essential parameters for daily use, omitting less common parameter tags. After chapter editing, use muxing tools like [MKVToolNix GUI](https://mkvtoolnix.download/)—which also provides a more comprehensive chapter editor.  
 
-### Interface Layout of the Tool
-  - **Responsive Layout**: The interface of MKV ChapWeb adopts a modern design style and can adapt to both PC and mobile devices. This interface supports automatic switching between light mode and dark mode according to the system settings and also supports bilingual display in Chinese and English. When loading the index page, the tool will intelligently detect the language settings of the browser and automatically jump to the corresponding language page, avoiding the need to use browser translation due to language barriers.
-  - **Sidebar Parameter Blocks**: After opening the MKV ChapWeb online website or launching the MKV ChapWeb offline tool, the sidebar of the main interface will dynamically generate parameter blocks according to the default number of chapters. Each parameter block contains input fields such as chapter name, start time, and end time. Users can directly fill in or modify the chapter information in the corresponding input boxes.
-  - **Main Control Parameter Area**: Located in the main part of the page, it contains key parameter settings such as the number of video chapters and language tags. After modifying these parameters, clicking the relevant buttons can trigger corresponding operations, and some operations will be dynamically generated, such as generating chapter tags and updating sidebar parameter blocks. It should be noted that modifying the data in the main control parameter area will refresh and clear the information already entered in the sidebar. Therefore, it is recommended that users complete the settings in this area before proceeding to the next step.
-  - **Operation Buttons**: The "Generate Chapter Tags" button is used to generate XML format chapter tag files according to the current settings; the "Upload XML" and "Download XML" buttons are used to import existing chapter information files (convenient for re-uploading and continuing editing after temporary data export) and download the currently generated chapter tag files respectively. After clicking the "Download XML" button, users can directly preview the generated XML file and perform the download operation.
+### Interface Layout  
+- **Responsive Design**: Modern interface adapts to PC/mobile devices with automatic light/dark mode and bilingual support. Intelligent detection of browser language settings ensures proper localization on page load.  
+- **Sidebar Parameter Blocks**: Dynamically generates parameter blocks based on the default chapter count, displaying inputs for names, start/end times.  
+- **Master Control Panel**: Contains critical settings like chapter count and language tags. Modifying these parameters and clicking the relevant button triggers corresponding actions (e.g., XML generation, sidebar block refresh). Note: Master settings reset sidebar data upon modification.  
+- **Action Buttons**:  
+  - "Generate Chapter Tags": Creates XML files with syntax highlighting via the open-source [highlight.js](https://highlightjs.org/) library.  
+  - "Upload XML File"/"Download XML File": Import/export chapter files (supports drag-and-drop upload).  
 
-### Chapter Parameter Settings
-  1. **Adjusting the Number of Chapters**: Enter the required number of chapters in the "Number of Video Chapters" input box in the main control parameter area, and then press the Enter key. The sidebar will automatically update to the corresponding number of chapters' parameter blocks, and users can fill in the detailed information of each chapter one by one in these blocks.
-  2. **Filling in Chapter Names**: Enter the name or title of the chapter in the "Chapter Name" input box of each chapter parameter block. The chapter name should be concise, clear, and identifiable to clearly mark the chapter content on the playback device.
-  3. **Setting Time Parameters**: For the "Chapter Start Time" and "Chapter End Time" input boxes, users need to enter the corresponding time values according to the specified time format (such as "hours:minutes:seconds") to accurately reflect the start and end positions of the chapter in the video, ensuring that the corresponding chapter can be correctly identified during playback.
+### Chapter Parameter Configuration  
+1. **Adjust Chapter Quantity**: Input desired count in the master panel and press Enter to auto-generate sidebar blocks.  
+2. **Name Input**: Enter descriptive chapter titles in each block.  
+3. **Time Parameter Configuration**:  
+   - Input in `hours:minutes:seconds` format.  
+   - Support for alternative delimiters (`.`, `-`) which auto-convert to standard `:` format.  
+   - Automatic padding for single-digit values (e.g., `2.44-6` → `02:44:06`).  
 
-In the logic code of this function part, an error correction function has been added. When entering the time code, the system will only recognize the first six digits as the time code. In addition to the colon (:) supported by the standard time format as the delimiter, decimal points (.) and hyphens (-) are also allowed for input. The final output time code will be formatted, that is, all delimiters will be replaced with colons (:), and redundant numeric characters and spaces will be removed. For single-digit time values, zeros will be automatically added to make them two digits (for example, entering 2.44-6 will be formatted and output as 02:44:06).
+### File Handling Process  
+- **XML Generation**: Click "Generate" to create validated XML with syntax highlighting.  
+- **XML Download**: Save generated XML for muxing with MKVToolNix or other editors.  
+- **XML Upload**: Import existing XML/OGM-style text files for editing. Note: Master settings must be configured before upload to prevent data loss.  
 
-### File Operation Process
-  - **Generating an XML File**: After completing all chapters' parameter settings, click the "Generate Chapter Tags" button. The tool will generate an XML format chapter tag file that complies with the specification according to the current parameters and display the preview content on the page. The preview page uses the open-source [highlight.js](https://highlightjs.org/) component library to achieve XML syntax highlighting, allowing users to check the accuracy and integrity of the file. After completing the editing, if there are no errors in the file, users can double-click the output code for one-click copying.
-  - **Downloading an XML File**: If the generated XML file is checked without errors, click the "Download XML" button to save the file to the local device for subsequent use in video editing software or MKV-related tools, or to mix and encapsulate it into an MKV video file to achieve the chapter function.
-  - **Uploading an XML File**: If you need to modify or view an existing XML chapter file, you can click the "Upload XML" button and select a local XML file for import. The tool will parse the file content and update the chapter parameter blocks in the sidebar, and users can conduct further editing on this basis.
+Support parsing OGM style simple chapter files.
+```txt
+CHAPTER01=00:00:00.000
+CHAPTER01NAME=Start
+CHAPTER02=00:00:35.789
+CHAPTER02NAME=Chapter 1
+CHAPTER03=00:01:23.456
+CHAPTER03NAME=The End
+```
 
-The uploading operation here is processed locally after the browser parses the data. The function of identifying the "Chapter End Time" during the upload and parsing process is intelligent. Even if the "Enable Chapter End Time Tag" checkbox in the main control block is not checked, the "Chapter End Time" will still be displayed on the right side, but it will not be output, because the control of outputting the chapter end time tag is controlled by the logic source code of the "Enable Chapter End Time Tag" option, rather than the upload and parsing logic source code. This function is currently in the beta version. If you find that the file cannot be uploaded, you can refresh the page and try again. And before uploading, please set the main parameters first, otherwise the uploaded data will be refreshed and cleared.
+Also supports standard MKV chapter specification XML files.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Chapters>
+  <EditionEntry>
+    <EditionUID>100480617270839</EditionUID>
+    <ChapterAtom>
+      <ChapterUID>1</ChapterUID>
+      <ChapterTimeStart>00:00:00.000000000</ChapterTimeStart>
+      <ChapterDisplay>
+        <ChapterString>第1章</ChapterString>
+    	<ChapterLanguage>chi</ChapterLanguage>
+    	<ChapLanguageIETF>zh</ChapLanguageIETF>
+      </ChapterDisplay>
+    </ChapterAtom>
+    <ChapterAtom>
+      <ChapterUID>2</ChapterUID>
+      <ChapterTimeStart>00:00:00.000000000</ChapterTimeStart>
+      <ChapterDisplay>
+        <ChapterString>第2章</ChapterString>
+    	<ChapterLanguage>chi</ChapterLanguage>
+    	<ChapLanguageIETF>zh</ChapLanguageIETF>
+      </ChapterDisplay>
+    </ChapterAtom>
+  </EditionEntry>
+</Chapters>
+```
 
-## Update Records
-### Second Phase Version
-  - **v2.2a**: Added the functions of removing and adding sidebar parameter blocks, and this operation will not reset the existing data. At the same time, added the functions of adapting to languages and switching between light and dark modes (supporting the detection of browser settings when initializing the page), and further optimized the interface style to make it have a better responsive layout effect.
-  - **v2.1b**: Added the functions of uploading XML files and downloading XML files. Currently, the uploading function is in the beta stage, and data exceptions or upload failures may occur.
-  - **v2.0a**: Refactored the style and generation logic, added a sidebar, and passed all sub-parameters into the chapter parameter blocks. Added dynamic chapter parameter blocks to the main control parameter area and optimized the adaptation of the mobile interface style.
-### First Phase Version
-  - **v1.3c**: Added an optional status for the end time tag, which is not enabled by default. At the same time, added the function of double-clicking to copy all the code.
-  - **v1.2a**: Added custom start and end time tags. The time input box by default supports the use of decimal points and hyphens as delimiters for connection, and it will be formatted into the standard time format when outputted finally.
-  - **v1.1a**: The second released version, added the functions of setting language tags and parameter ID types (sequential or random).
-  - **v1.0a**: The first version, only included two parameters: generating chapters and the number of chapters.
+The upload operation on this page is handled locally by the browser, which parses the data. The function for parsing and identifying the "Chapter End Time" during the upload process is designed to be intelligent. Even if the "Enable Chapter End Time Tag" option in the main control block is not checked, the "Chapter End Time" will still be displayed on the right side, but it will not be output. This is because the output of the chapter end - time tag is controlled by the logical source code of the "Enable Chapter End Time Tag" option, not the logical source code of the upload and parsing process.
+
+This function has been optimized in terms of its logical code and is now out of beta and officially released. If you still encounter issues uploading files, you can refresh the page and try again. Additionally, please set the main parameters before uploading; otherwise, the uploaded data will be refreshed and cleared.
+
+## Update History  
+### Phase 2 Releases  
+- **v2.3a**: Resolved translation inconsistencies and issues with missing language tag output. Enhanced upload support for both standard XML and OGM-style text files. Fixed an error where the chapter title could not parse some commonly used symbols.  
+- **v2.2a**: Added dynamic block management (add/remove without data loss), auto-detecting theme/language, and responsive layout improvements.  
+- **v2.1b**: Implemented XML import/export (beta). Possible data inconsistencies during initial testing.  
+- **v2.0a**: Full rewrite with sidebar interface, dynamic parameter blocks, and mobile optimization.  
+
+### Phase 1 Releases  
+- **v1.3c**: Implemented optional status for end time tags and double-click code copying.  
+- **v1.2a**: Enabled custom start/end time formatting with automatic delimiter conversion.  
+- **v1.1a**: Added language tags and parameter ID type configuration (sequential/random).  
+- **v1.0a**: Initial release with basic chapter generation functionality.  

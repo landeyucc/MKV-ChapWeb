@@ -12,16 +12,18 @@
 <body>
 	<div class="progress-bar"></div>
 	<script src="js/load.js"></script>
-    <div class="sidebar" id="sidebar">
-    </div>
+    <div class="sidebar" id="sidebar"></div>
+	<div id="dragTarget" class="hide">
+		<h1>Please drag and drop the chapter file here for parsing</h1>
+	</div>
     <div class="container">
         <button id="sidebarToggle" class="sidebar-toggle" onclick="toggleSidebar()" style="background: none;">
-			<img src="img/io.svg" id="Rotaimga"/>
+			<img src="img/io.svg" id="Rotaimga" width="25px"/>
         </button>
 		<button id="theme-toggle" class="theme-toggle">
-		    <img src="img/darklight.svg" id="Rotaimgb"/>
+		    <img src="img/darklight.svg" id="Rotaimgb" style="transform: translateY(-2px);"/>
 		</button>
-        <h1>MKV ChapWeb Main Control Parameters</h1>
+        <h1 style="font-size: 1.8em;">MKV ChapWeb Main Control Parameters</h1>
         <p style="color: red;text-align: left;">Attention: Modifying this parameter will reset the sidebar to its default value. Please confirm and adjust it before starting to avoid losing work progress.</p>
         <div class="input-group">
             <div>
@@ -46,7 +48,7 @@
         </div>
         <div class="input-group">
             <div>
-                <label for="includeEndTime" style="font-size: 18px;">Do you want to enable chapter end time tags</label>
+                <label for="includeEndTime" style="font-size: 18px;">Enable chapter end time tags</label>
                 <input type="checkbox" id="includeEndTime" onchange="updateParamBlocks()">
             </div>
 			<div>
@@ -54,17 +56,19 @@
 			</div>
         </div>
         <button onclick="generateChapters()">Generate and preview chapter labels</button>
-        <input type="file" id="uploadXML" accept=".xml" style="display: none;" onchange="uploadAndParseXML()">
-        <button onclick="document.getElementById('uploadXML').click()">Upload XML file (beta function)</button>
-        <button onclick="downloadXML()">Download XML file</button>
+        <input type="file" id="uploadXML" style="display: none;" accept=".xml,.txt">
+        <button onclick="triggerFileSelection()">Upload and parse XML files</button>
+        <button onclick="downloadXML()">Generate and download XML files</button>
         <iframe id="outputFrame" src="iframeContent.html" style="display: none;"></iframe>
     </div>
 	<footer>
 	        <div class="footer-content">
-				<img src="img/chapweb.svg" class="clogoimg"/>
-	            &copy; <span id="cyear"></span> <a href="https://github.com/landeyucc/" target="_blank">@landeyucc</a> All rights reserved.
-				<br id="ISMhidden"/>
-				<a href="https://github.com/landeyucc/MKV-ChapWeb" target="_blank"><img src="img/github.svg" class="clogoimg"/>&nbsp;GitHub Project</a>
+	        	<img src="img/chapweb.svg" class="clogoimg"/>
+	        	<span>MKV ChapWeb v2.3</span>
+	        	<br id="ISMhiddenA"/>
+	            &copy;<span id="cyear"></span><a href="https://github.com/landeyucc/" target="_blank">@landeyucc</a>All right reserved。 
+	        	<br id="ISMhiddenB"/>
+	        	<a href="https://github.com/landeyucc/MKV-ChapWeb" target="_blank"><img src="img/github.svg" class="clogoimg"/>&nbsp;GitHub Project</a>
 	            <a href="https://vl-a.com" target="_blank"><img src="img/vlicon.png" class="clogoimg"/>&nbsp;Lande Space</a>
 	        </div>
 	    </footer>
@@ -79,4 +83,5 @@
 	<script src="js/uploadxml-en.js"></script>
 	<script src="js/rotaimg.js"></script>
 	<script src="js/lightdark.js"></script>
+	<script src="js/dragupload.js"></script>
 </html>

@@ -3,7 +3,7 @@ function generateRandomUID() {
     let uid = '';
     const characters = '0123456789';
     const charactersLength = characters.length;
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 15; i++) {
         const randomIndex = Math.floor(Math.random() * charactersLength);
         uid += characters.charAt(randomIndex);
     }
@@ -13,7 +13,7 @@ function generateRandomUID() {
 // 验证并格式化时间码的函数
 function validateAndFormatTimeCode(timeCode) {
     // 首先检查输入是否为字符串，如果不是则直接返回默认值
-    if (typeof timeCode!== 'string') {
+    if (typeof timeCode !== 'string') {
         return '00:00:00';
     }
 
@@ -38,14 +38,14 @@ function validateAndFormatTimeCode(timeCode) {
         hours < 0 || hours > 23 ||
         minutes < 0 || minutes > 59 ||
         seconds < 0 || seconds > 59) {
-        return '00:00:00';
+        return '00:00:00.000000000';
     }
 
-    // 第六步：格式化输出，确保小时、分钟和秒都为两位数字
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    // 第六步：格式化输出，确保小时、分钟和秒都为两位数字，并添加小数点与9个0
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.000000000`;
 }
 
-// 测试调用
+// 开发测试调用
 // const testTimeCodes = [
 //     '00.2.3',
 //     '0-2-3',
@@ -62,5 +62,3 @@ function validateAndFormatTimeCode(timeCode) {
 //     const formattedTime = validateAndFormatTimeCode(timeCode);
 //     console.log(`输入: ${timeCode}, 输出: ${formattedTime}`);
 // });
-
-

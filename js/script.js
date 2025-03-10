@@ -23,7 +23,7 @@ function initSidebar() {
 
         paramBlock.innerHTML = `
             <h3>章节参数块 ${i + 1}</h3>
-            <label for="chapterName-${i}">章节名称：</label>
+            <label for="chapterName-${i}">章节名称</label>
             <input type="text" id="chapterName-${i}" value="第${i + 1}章">
             <label for="chapterStartTime-${i}">章节开始时间</label>
             <input type="text" id="chapterStartTime-${i}" value="00:00:00">
@@ -104,7 +104,7 @@ function updateParamBlocks() {
 
         paramBlock.innerHTML = `
             <h3>章节参数块 ${i + 1}</h3>
-            <label for="chapterName-${i}">章节名称：</label>
+            <label for="chapterName-${i}">章节名称</label>
             <input type="text" id="chapterName-${i}" value="第${i + 1}章">
             <label for="chapterStartTime-${i}">章节开始时间</label>
             <input type="text" id="chapterStartTime-${i}" value="00:00:00">
@@ -147,7 +147,7 @@ function addParamBlock() {
 
     paramBlock.innerHTML = `
         <h3>章节参数块 ${currentCount + 1}</h3>
-        <label for="chapterName-${currentCount}">章节名称：</label>
+        <label for="chapterName-${currentCount}">章节名称</label>
         <input type="text" id="chapterName-${currentCount}" value="第${currentCount + 1}章">
         <label for="chapterStartTime-${currentCount}">章节开始时间</label>
         <input type="text" id="chapterStartTime-${currentCount}" value="00:00:00">

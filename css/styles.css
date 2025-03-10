@@ -397,7 +397,7 @@ body.dark-mode .param-block select {
 	width: 20px;
 }
 
-#ISMhidden{
+#ISMhiddenA, #ISMhiddenB{
 	display: none;
 }
 
@@ -413,12 +413,12 @@ body.dark-mode .param-block select {
 	#addParamBlock {
 		width: 90%;
 	}
-	#ISMhidden{
+	#ISMhiddenA, #ISMhiddenB{
 	display: block;
 }
 }
 
-button[onclick="document.getElementById('uploadXML').click()"] {
+button[onclick="triggerFileSelection()"] {
 	display: inline-block;
 	width: 48%;
 }
@@ -430,7 +430,7 @@ button[onclick="downloadXML()"] {
 }
 
 @media screen and (max-width:1000px) {
-	button[onclick="document.getElementById('uploadXML').click()"] {
+	button[onclick="triggerFileSelection()"] {
 		width: 100%;
 	}
 
@@ -504,14 +504,14 @@ body.dark-mode footer{
 .footer-content {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 0 20px;
+	padding: 0px;
 }
 
 
 footer a {
 	color: darkblue;
 	text-decoration: none;
-	margin: 0 15px;
+	margin: 2px;
 	transition: color 0.3s;
 }
 

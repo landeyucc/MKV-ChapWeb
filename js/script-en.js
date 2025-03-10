@@ -22,7 +22,7 @@ function initSidebar() {
 
         paramBlock.innerHTML = `
             <h3>Chapter parameter block ${i + 1}</h3>
-            <label for="chapterName-${i}">Chapter Title:</label>
+            <label for="chapterName-${i}">Chapter Title</label>
             <input type="text" id="chapterName-${i}" value="Chapter ${i + 1}">
             <label for="chapterStartTime-${i}">Chapter start time</label>
             <input type="text" id="chapterStartTime-${i}" value="00:00:00">
@@ -97,7 +97,7 @@ function updateParamBlocks() {
 
         paramBlock.innerHTML = `
             <h3>Chapter parameter block ${i + 1}</h3>
-            <label for="chapterName-${i}">Chapter Title:</label>
+            <label for="chapterName-${i}">Chapter Title</label>
             <input type="text" id="chapterName-${i}" value="Chapter ${i + 1}">
             <label for="chapterStartTime-${i}">Chapter start time</label>
             <input type="text" id="chapterStartTime-${i}" value="00:00:00">
@@ -137,7 +137,7 @@ function addParamBlock() {
 
     paramBlock.innerHTML = `
         <h3>Chapter parameter block ${currentCount + 1}</h3>
-        <label for="chapterName-${currentCount}">Chapter Title:</label>
+        <label for="chapterName-${currentCount}">Chapter Title</label>
         <input type="text" id="chapterName-${currentCount}" value="Chapter ${currentCount + 1}">
         <label for="chapterStartTime-${currentCount}">Chapter start time</label>
         <input type="text" id="chapterStartTime-${currentCount}" value="00:00:00">
