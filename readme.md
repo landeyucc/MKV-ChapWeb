@@ -48,23 +48,23 @@ Also supports standard MKV chapter specification XML files.
 <?xml version="1.0" encoding="UTF-8"?>
 <Chapters>
   <EditionEntry>
-    <EditionUID>100480617270839</EditionUID>
+    <EditionUID>251061650072922</EditionUID>
     <ChapterAtom>
       <ChapterUID>1</ChapterUID>
       <ChapterTimeStart>00:00:00.000000000</ChapterTimeStart>
       <ChapterDisplay>
-        <ChapterString>第1章</ChapterString>
-    	<ChapterLanguage>chi</ChapterLanguage>
-    	<ChapLanguageIETF>zh</ChapLanguageIETF>
+        <ChapterString>Chapter 1</ChapterString>
+    	<ChapterLanguage>eng</ChapterLanguage>
+    	<ChapLanguageIETF>en</ChapLanguageIETF>
       </ChapterDisplay>
     </ChapterAtom>
     <ChapterAtom>
       <ChapterUID>2</ChapterUID>
       <ChapterTimeStart>00:00:00.000000000</ChapterTimeStart>
       <ChapterDisplay>
-        <ChapterString>第2章</ChapterString>
-    	<ChapterLanguage>chi</ChapterLanguage>
-    	<ChapLanguageIETF>zh</ChapLanguageIETF>
+        <ChapterString>Chapter 2</ChapterString>
+    	<ChapterLanguage>eng</ChapterLanguage>
+    	<ChapLanguageIETF>en</ChapLanguageIETF>
       </ChapterDisplay>
     </ChapterAtom>
   </EditionEntry>
